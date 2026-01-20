@@ -156,7 +156,7 @@ git add icon.svg
 git commit -m "Resolve icon.svg conflict by keeping ours"
 ```
 
-Optional note: For large PNGs, consider Git LFS. SVGs are text and mergeable but still can conflict.
+**Note:** For large binary files like PNGs, consider [Git LFS](https://git-lfs.com/). SVGs are text and mergeable but still can conflict.
 
 ## Q&A
 1) I get an error "merge: \<branch-name\> - not something we can merge". What does this mean?
