@@ -11,6 +11,9 @@ namespace GA.GitWorkshop
 		// The rotation speed of the icon. Degrees per second.
 		[Export] private float _rotationSpeed = 45f;
 
+		// The speed to move the icon in pixels / second.
+		[Export] private float _moveSpeed = 50f;
+
 		/// <summary>
 		/// Introduce yourself!
 		/// </summary>
@@ -26,6 +29,7 @@ namespace GA.GitWorkshop
 		override public void _Process(double delta)
 		{
 			RotationDegrees += _rotationSpeed * (float)delta;
+			Position += new Vector2(_moveSpeed * (float)delta, 0);
 		}
 	}
 }
