@@ -1,11 +1,11 @@
 # Git Workshop (Godot + C#)
 
-Audience: Games Academy season 2 students, artists and programmers
-Focus: branching and merging (no pull requests)
-Engine: Godot (text-based scenes), Language: C#
+**Audience:** Games Academy season 2 students, artists and programmers  
+**Focus:** branching and merging (no pull requests)  
+**Engine:** Godot (text-based scenes), Language: C#  
 
 ## Prerequisites
-- Git installed (Windows): Git for Windows
+- Git installed
 - Godot 4.x installed
 - VS Code + C# Dev Kit (optional but helpful)
 - Clone this repo locally
@@ -23,6 +23,15 @@ Each exercise below includes exact commands. Suggested groups: 1-2 artists + 1 p
 
 ## Preparation
 Fork the workshop repository to your own GitHub (one member of the team). Share your copy to the rest of the team.
+
+### Make Visual Studio Code your default merge tool
+Git needs to know which tool should be used as merge tool and how to use it. Follow the instructions below to configure Visual Studio Code your default merge tool.
+
+1) `git config --global merge.tool vscode`
+2) `git config --global mergetool.vscode.cmd 'code --wait --merge $REMOTE $LOCAL $BASE $MERGED'`
+3) `git config --global diff.tool vscode`
+4) `git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'`
+
 
 ## Exercise 1: Branch, change, merge (fast-forward)
 Goal: create a branch, make a small change, merge back.
@@ -51,7 +60,7 @@ Outcome: everyone completes a simple branch/merge cycle.
 
 ---
 
-## Exercise 2: Parallel changes without conflict (art vs code)
+## Exercise 2: Parallel changes without conflict (code and scene)
 Goal: experience merging two branches that edit different files.
 
 Prepared branches (already created by instructor):
@@ -99,25 +108,22 @@ git commit -m "Resolve C# conflict by combining move + rotate"
 Run in Godot and verify both effects are present.
 
 ---
-TODO: Continue editing from here!
----
 
 ## Exercise 4: Scene (.tscn) conflict
 Goal: resolve a conflict in Godot scene text.
 
 Prepared branches:
-- `conflict/scene-pos-a` sets `Icon` position to one value.
-- `conflict/scene-pos-b` sets `Icon` position to a different value.
+- merge in exercise 3 changed the `Icon`'s position.
+- `level/bottom-right` sets `Icon` position to other value.
 
 Steps:
 ```bash
 git checkout main
-git merge conflict/scene-pos-a
-# Now merge the conflicting one
-git merge conflict/scene-pos-b
+git merge level/bottom-right
+# There should now be a merge conflict.
 ```
 Resolve:
-- Open `Scenes/Example.tscn` and decide on final `position = Vector2(x, y)` for `Icon`.
+- run `git mergetool` and decide on final `position = Vector2(x, y)` for `Icon`.
 - Save, stage, and commit.
 
 Tip: It’s safe to edit .tscn in VS Code as it’s plain text, but verify in Godot by reopening the scene.
@@ -128,15 +134,15 @@ Tip: It’s safe to edit .tscn in VS Code as it’s plain text, but verify in Go
 Goal: resolve a conflict when two branches replace the same asset.
 
 Prepared branches:
-- `art/change-icon-red` replaces `icon.svg` with a red icon.
-- `art/change-icon-blue` replaces `icon.svg` with a blue icon.
+- `art/icon-red` replaces `icon.svg` with a red icon.
+- `art/icon-blue` replaces `icon.svg` with a blue icon.
 
 Steps:
 ```bash
 git checkout main
-git merge art/change-icon-red
+git merge art/icon-red
 # Now merge the other branch and resolve
-git merge art/change-icon-blue
+git merge art/icon-blue
 ```
 Resolve:
 - Choose either version (ours/theirs) or bring in a new asset and re-commit.
