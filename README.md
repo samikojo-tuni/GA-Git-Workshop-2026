@@ -148,6 +148,7 @@ git merge art/icon-blue
 ```
 Resolve:
 - Choose either version (ours/theirs) or bring in a new asset and re-commit.
+- The options are `--ours` and `--theirs`
 ```bash
 # Example: keep current (ours) for icon.svg
 git checkout --ours icon.svg
@@ -158,5 +159,5 @@ git commit -m "Resolve icon.svg conflict by keeping ours"
 Optional note: For large PNGs, consider Git LFS. SVGs are text and mergeable but still can conflict.
 
 ## Q&A
-1) I get error "merge: \<branch-name\> - not something we can merge". What does this mean?
+1) I get an error "merge: \<branch-name\> - not something we can merge". What does this mean?
 > This typically happens because the branch you try to merge is not downloaded locally. In this case you may try to specify that you want to merge remote version or the branch. E.g. `git merge origin/feature/rotate-sprite` if we were merging the `feature/rotate-sprite` branch.
