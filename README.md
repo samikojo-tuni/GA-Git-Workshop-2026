@@ -32,6 +32,8 @@ Git needs to know which tool should be used as merge tool and how to use it. Fol
 3) `git config --global diff.tool vscode`
 4) `git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'`
 
+** NOTE! **  
+Exercises should be done in the the order defined here. Previous changes should **NOT** be discarded between exercises.
 
 ## Exercise 1: Branch, change, merge (fast-forward)
 Goal: create a branch, make a small change, merge back.
