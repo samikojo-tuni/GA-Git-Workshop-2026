@@ -9,3 +9,8 @@
 position = Vector2(106, 99)
 texture = ExtResource("1_q8gdj")
 script = ExtResource("2_1jpm3")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Testing"
